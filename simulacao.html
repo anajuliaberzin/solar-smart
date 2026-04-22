@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolarSmart — Simulação</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="ss-layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="ss-sidebar" id="sidebar">
+    <div class="ss-sidebar-logo">
+      <a href="index.html" class="ss-logo">Solar<span>Smart</span></a>
+    </div>
+    <nav class="ss-sidebar-nav">
+      <a href="dashboard.html" class="ss-nav-item">
+        <span class="ss-nav-icon">📊</span> Dashboard
+      </a>
+      <a href="simulacao.html" class="ss-nav-item active">
+        <span class="ss-nav-icon">⚡</span> Simulação
+      </a>
+      <a href="relatorios.html" class="ss-nav-item">
+        <span class="ss-nav-icon">📄</span> Relatórios
+      </a>
+      <a href="configuracoes.html" class="ss-nav-item">
+        <span class="ss-nav-icon">⚙️</span> Configurações
+      </a>
+    </nav>
+    <div class="p-3" style="border-top:1px solid rgba(255,255,255,.07);">
+      <a href="index.html" class="ss-nav-item" style="border-radius:10px;">
+        <span class="ss-nav-icon">🚪</span> Sair
+      </a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="ss-main">
+
+    <header class="ss-topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.3rem;">☰</button>
+        <span class="ss-topbar-title">Simulação</span>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <span style="color:var(--ss-muted);font-size:.88rem;" class="d-none d-md-block">Olá, Usuário</span>
+        <div class="ss-avatar">U</div>
+      </div>
+    </header>
+
+    <main class="ss-content">
+
+      <div class="row g-4">
+
+        <!-- FORM -->
+        <div class="col-lg-5">
+          <div class="ss-card p-4 anim-fade-up">
+            <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Dados da simulação</h5>
+            <p class="mb-4" style="color:var(--ss-muted);font-size:.88rem;">Preencha os campos abaixo para calcular sua economia em tempo real.</p>
+
+            <div class="mb-3">
+              <label class="ss-form-label" for="consumo">Consumo mensal (kWh)</label>
+              <input type="number" id="consumo" class="ss-form-control" placeholder="Ex: 350" min="0" oninput="calcular()" />
+            </div>
+
+            <div class="mb-3">
+              <label class="ss-form-label" for="tarifa">Tarifa de energia (R$/kWh)</label>
+              <input type="number" id="tarifa" class="ss-form-control" placeholder="Ex: 0.75" step="0.01" min="0" oninput="calcular()" />
+            </div>
+
+            <div class="mb-3">
+              <label class="ss-form-label" for="area">Área disponível (m²)</label>
+              <input type="number" id="area" class="ss-form-control" placeholder="Ex: 20" min="0" oninput="calcular()" />
+            </div>
+
+            <div class="mb-4">
+              <label class="ss-form-label" for="investimento">Investimento estimado (R$)</label>
+              <input type="number" id="investimento" class="ss-form-control" placeholder="Ex: 25000" min="0" oninput="calcular()" />
+            </div>
+
+            <button class="ss-btn-primary w-100 py-3" style="border-radius:10px;" onclick="calcular()">
+              ⚡ Calcular simulação
+            </button>
+          </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="col-lg-7">
+          <div class="row g-3">
+
+            <div class="col-12">
+              <div class="ss-welcome-banner anim-fade-up anim-delay-1">
+                <h5 class="fw-bold mb-1">Resultados da simulação</h5>
+                <p class="mb-0" style="color:rgba(255,255,255,.7);font-size:.88rem;">Os valores são calculados em tempo real conforme você preenche.</p>
+              </div>
+            </div>
+
+            <!-- Stat cards -->
+            <div class="col-sm-4 anim-fade-up anim-delay-1">
+              <div class="ss-stat-card">
+                <div class="ss-stat-label">💵 Economia mensal</div>
+                <div class="ss-stat-value" id="res-mensal">R$ —</div>
+                <div class="ss-stat-sub">por mês</div>
+              </div>
+            </div>
+
+            <div class="col-sm-4 anim-fade-up anim-delay-2">
+              <div class="ss-stat-card">
+                <div class="ss-stat-label">📆 Economia anual</div>
+                <div class="ss-stat-value" id="res-anual">R$ —</div>
+                <div class="ss-stat-sub">por ano</div>
+              </div>
+            </div>
+
+            <div class="col-sm-4 anim-fade-up anim-delay-3">
+              <div class="ss-stat-card">
+                <div class="ss-stat-label">🔄 Payback</div>
+                <div class="ss-stat-value" id="res-payback">— anos</div>
+                <div class="ss-stat-sub">retorno do investimento</div>
+              </div>
+            </div>
+
+            <!-- Extra info card -->
+            <div class="col-12 anim-fade-up anim-delay-4">
+              <div class="ss-card p-4">
+                <h6 class="fw-bold mb-3" style="font-family:var(--font-display);">📋 Detalhes da instalação</h6>
+                <div class="row g-2">
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between py-2" style="border-bottom:1px solid var(--ss-border);">
+                      <span style="color:var(--ss-muted);font-size:.88rem;">Potência estimada</span>
+                      <strong id="res-potencia" style="font-size:.88rem;">— kWp</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between py-2" style="border-bottom:1px solid var(--ss-border);">
+                      <span style="color:var(--ss-muted);font-size:.88rem;">Painéis estimados</span>
+                      <strong id="res-paineis" style="font-size:.88rem;">— un.</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between py-2">
+                      <span style="color:var(--ss-muted);font-size:.88rem;">CO₂ evitado / ano</span>
+                      <strong id="res-co2" style="font-size:.88rem;color:var(--ss-success);">— kg</strong>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="d-flex justify-content-between py-2">
+                      <span style="color:var(--ss-muted);font-size:.88rem;">Geração / mês</span>
+                      <strong id="res-geracao" style="font-size:.88rem;">— kWh</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calcular() {
+    const consumo     = parseFloat(document.getElementById('consumo').value) || 0;
+    const tarifa      = parseFloat(document.getElementById('tarifa').value) || 0;
+    const investimento = parseFloat(document.getElementById('investimento').value) || 0;
+
+    const economiaMensal = consumo * tarifa * 0.90; // 90% de cobertura solar
+    const economiaAnual  = economiaMensal * 12;
+    const payback        = investimento > 0 && economiaAnual > 0
+                            ? (investimento / economiaAnual).toFixed(1)
+                            : null;
+
+    const potencia  = (consumo / 150).toFixed(2);   // kWp estimado
+    const paineis   = Math.ceil(consumo / 35);       // ~35kWh por painel/mês
+    const co2       = (consumo * 12 * 0.0817).toFixed(0); // fator SEEG
+    const geracao   = (consumo * 0.90).toFixed(0);
+
+    document.getElementById('res-mensal').textContent  = economiaMensal > 0 ? 'R$ ' + fmt(economiaMensal) : 'R$ —';
+    document.getElementById('res-anual').textContent   = economiaAnual  > 0 ? 'R$ ' + fmt(economiaAnual)  : 'R$ —';
+    document.getElementById('res-payback').textContent = payback ? payback + ' anos' : '— anos';
+    document.getElementById('res-potencia').textContent = consumo > 0 ? potencia + ' kWp' : '— kWp';
+    document.getElementById('res-paineis').textContent  = consumo > 0 ? paineis + ' un.' : '— un.';
+    document.getElementById('res-co2').textContent      = consumo > 0 ? co2 + ' kg' : '— kg';
+    document.getElementById('res-geracao').textContent  = consumo > 0 ? geracao + ' kWh' : '— kWh';
+  }
+</script>
+</body>
+</html>
