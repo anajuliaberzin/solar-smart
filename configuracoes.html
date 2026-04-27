@@ -6,6 +6,7 @@
   <title>SolarSmart — Configurações</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 </head>
 <body>
 
@@ -16,20 +17,21 @@
       <a href="index.html" class="ss-logo">Solar<span>Smart</span></a>
     </div>
     <nav class="ss-sidebar-nav">
-      <a href="dashboard.html" class="ss-nav-item"><span class="ss-nav-icon">📊</span> Dashboard</a>
-      <a href="simulacao.html" class="ss-nav-item"><span class="ss-nav-icon">⚡</span> Simulação</a>
-      <a href="relatorios.html" class="ss-nav-item"><span class="ss-nav-icon">📄</span> Relatórios</a>
-      <a href="configuracoes.html" class="ss-nav-item active"><span class="ss-nav-icon">⚙️</span> Configurações</a>
+      <a href="dashboard.html" class="ss-nav-item"><span class="ss-nav-icon"><i class="bi bi-grid"></i></span> Dashboard</a>
+      <a href="ocorrencias.html" class="ss-nav-item"><span class="ss-nav-icon"><i class="bi bi-bell"></i></span> Ocorrências</a>
+      <a href="relatorios.html" class="ss-nav-item"><span class="ss-nav-icon"><i class="bi bi-bar-chart"></i></span> Relatórios</a>
+      <a href="configuracoes.html" class="ss-nav-item active"><span class="ss-nav-icon"><i class="bi bi-gear"></i></span> Configurações</a>
+      <a href="cliente.html" class="ss-nav-item"><span class="ss-nav-icon"><i class="bi bi-house"></i></span> Área do Cliente</a>
     </nav>
     <div class="p-3" style="border-top:1px solid rgba(255,255,255,.07);">
-      <a href="index.html" class="ss-nav-item" style="border-radius:10px;"><span class="ss-nav-icon">🚪</span> Sair</a>
+      <a href="index.html" class="ss-nav-item" style="border-radius:10px;"><span class="ss-nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sair</a>
     </div>
   </aside>
 
   <div class="ss-main">
     <header class="ss-topbar">
       <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.3rem;">☰</button>
+        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.1rem;color:var(--ss-muted);"><i class="bi bi-list"></i></button>
         <span class="ss-topbar-title">Configurações</span>
       </div>
       <div class="d-flex align-items-center gap-3">
@@ -39,17 +41,63 @@
     </header>
 
     <main class="ss-content">
-      <div class="ss-card anim-fade-up">
-        <div class="ss-empty-state">
-          <span class="ss-empty-icon">⚙️</span>
-          <h4>Configurações em breve</h4>
-          <p>Aqui você poderá personalizar seu perfil, notificações e preferências do sistema.</p>
-          <span class="badge px-3 py-2 rounded-pill"
-            style="background:var(--ss-accent-light);color:#92400e;border:1px solid rgba(245,158,11,.3);font-size:.82rem;">
-            🚧 Disponível em breve
+      <form onsubmit="salvarConfiguracoes(event)">
+
+        <!-- Tipos de eventos -->
+        <div class="ss-card p-4 mb-4 anim-fade-up">
+          <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Tipos de eventos</h5>
+          <p class="mb-4" style="color:var(--ss-muted);font-size:.88rem;">Ative ou desative os tipos de ocorrência monitoráveis.</p>
+          <div class="row g-3">
+            <div class="col-sm-6 col-lg-4" id="checkboxes-tipos">
+            </div>
+          </div>
+          <div class="row g-3" id="checkboxes-container">
+          </div>
+        </div>
+
+        <!-- Limiares de alerta -->
+        <div class="ss-card p-4 mb-4 anim-fade-up anim-delay-1">
+          <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Limiar de alerta por tipo</h5>
+          <p class="mb-4" style="color:var(--ss-muted);font-size:.88rem;">Defina a severidade mínima para notificação de cada tipo de evento.</p>
+          <div class="row g-3" id="limiares-container">
+          </div>
+        </div>
+
+        <!-- Nome dos painéis -->
+        <div class="ss-card p-4 mb-4 anim-fade-up anim-delay-2">
+          <h5 class="fw-bold mb-1" style="font-family:var(--font-display);">Nome dos painéis</h5>
+          <p class="mb-4" style="color:var(--ss-muted);font-size:.88rem;">Personalize o rótulo de cada painel monitorado.</p>
+          <div class="row g-3">
+            <div class="col-sm-6 col-md-3">
+              <label class="ss-form-label" for="painel-a">Painel A</label>
+              <input type="text" id="painel-a" class="ss-form-control" value="Painel A" maxlength="30" />
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <label class="ss-form-label" for="painel-b">Painel B</label>
+              <input type="text" id="painel-b" class="ss-form-control" value="Painel B" maxlength="30" />
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <label class="ss-form-label" for="painel-c">Painel C</label>
+              <input type="text" id="painel-c" class="ss-form-control" value="Painel C" maxlength="30" />
+            </div>
+            <div class="col-sm-6 col-md-3">
+              <label class="ss-form-label" for="painel-d">Painel D</label>
+              <input type="text" id="painel-d" class="ss-form-control" value="Painel D" maxlength="30" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Salvar -->
+        <div class="anim-fade-up anim-delay-3">
+          <button type="submit" class="ss-btn-primary" style="border-radius:10px;padding:.75rem 2.2rem;">
+            <i class="bi bi-check2" style="margin-right:.4rem;"></i>Salvar configurações
+          </button>
+          <span id="msg-salvo" style="display:none;margin-left:1rem;color:var(--ss-success);font-weight:500;font-size:.9rem;">
+            Configurações salvas com sucesso!
           </span>
         </div>
-      </div>
+
+      </form>
     </main>
   </div>
 
@@ -59,6 +107,55 @@
 <script>
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
+  }
+
+  const tipos = [
+    'Sujeira',
+    'Falha técnica',
+    'Interferência animal',
+    'Sombreamento',
+    'Manutenção preventiva',
+    'Outro',
+  ];
+
+  // Render checkboxes
+  const container = document.getElementById('checkboxes-container');
+  tipos.forEach(tipo => {
+    const col = document.createElement('div');
+    col.className = 'col-sm-6 col-lg-4';
+    col.innerHTML = `
+      <div class="d-flex align-items-center gap-2 p-3" style="border:1.5px solid var(--ss-border);border-radius:10px;background:var(--ss-bg);">
+        <input type="checkbox" id="chk-${tipo}" name="tipos" value="${tipo}" checked
+          style="width:18px;height:18px;accent-color:var(--ss-blue-brand);cursor:pointer;" />
+        <label for="chk-${tipo}" style="font-size:.9rem;font-weight:500;cursor:pointer;margin:0;">${tipo}</label>
+      </div>
+    `;
+    container.appendChild(col);
+  });
+
+  // Render limiares
+  const limiares = document.getElementById('limiares-container');
+  tipos.forEach(tipo => {
+    const col = document.createElement('div');
+    col.className = 'col-sm-6 col-lg-4';
+    col.innerHTML = `
+      <div>
+        <label class="ss-form-label" for="lim-${tipo}">${tipo}</label>
+        <select id="lim-${tipo}" class="ss-form-control" style="padding:.6rem 1rem;font-size:.88rem;">
+          <option value="Baixa">Baixa</option>
+          <option value="Média" selected>Média</option>
+          <option value="Alta">Alta</option>
+        </select>
+      </div>
+    `;
+    limiares.appendChild(col);
+  });
+
+  function salvarConfiguracoes(e) {
+    e.preventDefault();
+    const msg = document.getElementById('msg-salvo');
+    msg.style.display = 'inline';
+    setTimeout(() => { msg.style.display = 'none'; }, 3000);
   }
 </script>
 </body>

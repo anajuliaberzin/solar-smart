@@ -6,6 +6,7 @@
   <title>SolarSmart — Simulação</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 </head>
 <body>
 
@@ -18,21 +19,21 @@
     </div>
     <nav class="ss-sidebar-nav">
       <a href="dashboard.html" class="ss-nav-item">
-        <span class="ss-nav-icon">📊</span> Dashboard
+        <span class="ss-nav-icon"><i class="bi bi-grid"></i></span> Dashboard
       </a>
       <a href="simulacao.html" class="ss-nav-item active">
-        <span class="ss-nav-icon">⚡</span> Simulação
+        <span class="ss-nav-icon"><i class="bi bi-lightning-charge"></i></span> Simulação
       </a>
       <a href="relatorios.html" class="ss-nav-item">
-        <span class="ss-nav-icon">📄</span> Relatórios
+        <span class="ss-nav-icon"><i class="bi bi-bar-chart"></i></span> Relatórios
       </a>
       <a href="configuracoes.html" class="ss-nav-item">
-        <span class="ss-nav-icon">⚙️</span> Configurações
+        <span class="ss-nav-icon"><i class="bi bi-gear"></i></span> Configurações
       </a>
     </nav>
     <div class="p-3" style="border-top:1px solid rgba(255,255,255,.07);">
       <a href="index.html" class="ss-nav-item" style="border-radius:10px;">
-        <span class="ss-nav-icon">🚪</span> Sair
+        <span class="ss-nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sair
       </a>
     </div>
   </aside>
@@ -42,7 +43,7 @@
 
     <header class="ss-topbar">
       <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.3rem;">☰</button>
+        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.1rem;color:var(--ss-muted);"><i class="bi bi-list"></i></button>
         <span class="ss-topbar-title">Simulação</span>
       </div>
       <div class="d-flex align-items-center gap-3">
@@ -82,7 +83,7 @@
             </div>
 
             <button class="ss-btn-primary w-100 py-3" style="border-radius:10px;" onclick="calcular()">
-              ⚡ Calcular simulação
+              <i class="bi bi-lightning-charge me-1"></i> Calcular simulação
             </button>
           </div>
         </div>
@@ -101,7 +102,7 @@
             <!-- Stat cards -->
             <div class="col-sm-4 anim-fade-up anim-delay-1">
               <div class="ss-stat-card">
-                <div class="ss-stat-label">💵 Economia mensal</div>
+                <div class="ss-stat-label"><i class="bi bi-currency-dollar" style="color:var(--ss-blue-brand);"></i> Economia mensal</div>
                 <div class="ss-stat-value" id="res-mensal">R$ —</div>
                 <div class="ss-stat-sub">por mês</div>
               </div>
@@ -109,7 +110,7 @@
 
             <div class="col-sm-4 anim-fade-up anim-delay-2">
               <div class="ss-stat-card">
-                <div class="ss-stat-label">📆 Economia anual</div>
+                <div class="ss-stat-label"><i class="bi bi-calendar" style="color:var(--ss-blue-brand);"></i> Economia anual</div>
                 <div class="ss-stat-value" id="res-anual">R$ —</div>
                 <div class="ss-stat-sub">por ano</div>
               </div>
@@ -117,7 +118,7 @@
 
             <div class="col-sm-4 anim-fade-up anim-delay-3">
               <div class="ss-stat-card">
-                <div class="ss-stat-label">🔄 Payback</div>
+                <div class="ss-stat-label"><i class="bi bi-arrow-repeat" style="color:var(--ss-blue-brand);"></i> Payback</div>
                 <div class="ss-stat-value" id="res-payback">— anos</div>
                 <div class="ss-stat-sub">retorno do investimento</div>
               </div>
@@ -126,7 +127,7 @@
             <!-- Extra info card -->
             <div class="col-12 anim-fade-up anim-delay-4">
               <div class="ss-card p-4">
-                <h6 class="fw-bold mb-3" style="font-family:var(--font-display);">📋 Detalhes da instalação</h6>
+                <h6 class="fw-bold mb-3" style="font-family:var(--font-display);"><i class="bi bi-clipboard me-1" style="color:var(--ss-blue-brand);"></i> Detalhes da instalação</h6>
                 <div class="row g-2">
                   <div class="col-sm-6">
                     <div class="d-flex justify-content-between py-2" style="border-bottom:1px solid var(--ss-border);">
