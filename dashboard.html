@@ -6,6 +6,7 @@
   <title>SolarSmart — Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
 </head>
 <body>
 
@@ -19,22 +20,25 @@
 
     <nav class="ss-sidebar-nav">
       <a href="dashboard.html" class="ss-nav-item active">
-        <span class="ss-nav-icon">📊</span> Dashboard
+        <span class="ss-nav-icon"><i class="bi bi-grid"></i></span> Dashboard
       </a>
-      <a href="simulacao.html" class="ss-nav-item">
-        <span class="ss-nav-icon">⚡</span> Simulação
+      <a href="ocorrencias.html" class="ss-nav-item">
+        <span class="ss-nav-icon"><i class="bi bi-bell"></i></span> Ocorrências
       </a>
       <a href="relatorios.html" class="ss-nav-item">
-        <span class="ss-nav-icon">📄</span> Relatórios
+        <span class="ss-nav-icon"><i class="bi bi-bar-chart"></i></span> Relatórios
       </a>
       <a href="configuracoes.html" class="ss-nav-item">
-        <span class="ss-nav-icon">⚙️</span> Configurações
+        <span class="ss-nav-icon"><i class="bi bi-gear"></i></span> Configurações
+      </a>
+      <a href="cliente.html" class="ss-nav-item">
+        <span class="ss-nav-icon"><i class="bi bi-house"></i></span> Área do Cliente
       </a>
     </nav>
 
     <div class="p-3" style="border-top:1px solid rgba(255,255,255,.07);">
       <a href="index.html" class="ss-nav-item" style="border-radius:10px;">
-        <span class="ss-nav-icon">🚪</span> Sair
+        <span class="ss-nav-icon"><i class="bi bi-box-arrow-left"></i></span> Sair
       </a>
     </div>
   </aside>
@@ -46,7 +50,7 @@
     <header class="ss-topbar">
       <div class="d-flex align-items-center gap-3">
         <!-- Mobile toggle -->
-        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.3rem;">☰</button>
+        <button class="btn btn-sm d-lg-none p-1" onclick="toggleSidebar()" style="border:none;background:none;font-size:1.1rem;color:var(--ss-muted);"><i class="bi bi-list"></i></button>
         <span class="ss-topbar-title">Dashboard</span>
       </div>
       <div class="d-flex align-items-center gap-3">
@@ -60,19 +64,99 @@
 
       <!-- Welcome Banner -->
       <div class="ss-welcome-banner mb-4 anim-fade-up">
-        <h3 class="fw-bold mb-1" style="font-size:1.5rem;">Bem-vindo ao SolarSmart! 👋</h3>
+        <h3 class="fw-bold mb-1" style="font-size:1.5rem;">Bem-vindo ao SolarSmart!</h3>
         <p class="mb-0" style="color:rgba(255,255,255,.75);font-size:.95rem;">
           Sua jornada para economizar com energia solar começa aqui.
         </p>
       </div>
 
-      <!-- Empty state -->
-      <div class="ss-card p-0 anim-fade-up anim-delay-1">
-        <div class="ss-empty-state">
-          <span class="ss-empty-icon">☀️</span>
-          <h4>Nenhuma simulação ainda</h4>
-          <p>Inicie sua primeira simulação para ver os resultados de economia e retorno do investimento aqui.</p>
-          <a href="simulacao.html" class="ss-btn-primary">Iniciar simulação</a>
+      <!-- Stat Cards -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xl-3 anim-fade-up anim-delay-1">
+          <div class="ss-stat-card">
+            <div class="ss-stat-label"><i class="bi bi-bell" style="color:var(--ss-blue-brand);margin-right:.3rem;"></i>Total de Ocorrências</div>
+            <div class="ss-stat-value">17</div>
+            <div class="ss-stat-sub">desde o início</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 anim-fade-up anim-delay-2">
+          <div class="ss-stat-card">
+            <div class="ss-stat-label"><i class="bi bi-calendar" style="color:var(--ss-blue-brand);margin-right:.3rem;"></i>Ocorrências este mês</div>
+            <div class="ss-stat-value">5</div>
+            <div class="ss-stat-sub">abril / 2026</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 anim-fade-up anim-delay-3">
+          <div class="ss-stat-card">
+            <div class="ss-stat-label"><i class="bi bi-sun" style="color:var(--ss-blue-brand);margin-right:.3rem;"></i>Painéis monitorados</div>
+            <div class="ss-stat-value">4</div>
+            <div class="ss-stat-sub">Painéis A, B, C e D</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 anim-fade-up anim-delay-4">
+          <div class="ss-stat-card">
+            <div class="ss-stat-label"><i class="bi bi-clock" style="color:var(--ss-blue-brand);margin-right:.3rem;"></i>Último evento</div>
+            <div class="ss-stat-value" style="font-size:1.35rem;">25/04</div>
+            <div class="ss-stat-sub">09:14 — Painel B</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de ocorrências recentes -->
+      <div class="ss-card p-4 anim-fade-up anim-delay-4">
+        <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+          <h5 class="fw-bold mb-0" style="font-family:var(--font-display);">Ocorrências recentes</h5>
+          <a href="ocorrencias.html" class="ss-btn-primary" style="font-size:.82rem;padding:.45rem 1.2rem;border-radius:8px;">Ver todas</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-middle" style="font-size:.9rem;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--ss-border);">
+                <th style="font-family:var(--font-display);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ss-muted);font-weight:600;padding:.6rem 1rem;white-space:nowrap;">Data/Hora</th>
+                <th style="font-family:var(--font-display);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ss-muted);font-weight:600;padding:.6rem 1rem;">Painel</th>
+                <th style="font-family:var(--font-display);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ss-muted);font-weight:600;padding:.6rem 1rem;">Tipo</th>
+                <th style="font-family:var(--font-display);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ss-muted);font-weight:600;padding:.6rem 1rem;">Severidade</th>
+                <th style="font-family:var(--font-display);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ss-muted);font-weight:600;padding:.6rem 1rem;">Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--ss-border);">
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);white-space:nowrap;">25/04/2026 09:14</td>
+                <td style="padding:.65rem 1rem;font-weight:500;">Painel B</td>
+                <td style="padding:.65rem 1rem;">Sujeira</td>
+                <td style="padding:.65rem 1rem;"><span class="badge rounded-pill px-2 py-1" style="background:#fef9c3;color:#854d0e;border:1px solid #fef08a;font-size:.78rem;">Média</span></td>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);">Acúmulo de poeira após período seco prolongado.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--ss-border);">
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);white-space:nowrap;">22/04/2026 14:30</td>
+                <td style="padding:.65rem 1rem;font-weight:500;">Painel D</td>
+                <td style="padding:.65rem 1rem;">Falha técnica</td>
+                <td style="padding:.65rem 1rem;"><span class="badge rounded-pill px-2 py-1" style="background:#fee2e2;color:#991b1b;border:1px solid #fecaca;font-size:.78rem;">Alta</span></td>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);">Queda de tensão no inversor detectada pelo sistema.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--ss-border);">
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);white-space:nowrap;">20/04/2026 11:00</td>
+                <td style="padding:.65rem 1rem;font-weight:500;">Todos</td>
+                <td style="padding:.65rem 1rem;">Sombreamento</td>
+                <td style="padding:.65rem 1rem;"><span class="badge rounded-pill px-2 py-1" style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0;font-size:.78rem;">Baixa</span></td>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);">Nuvens espessas durante a manhã reduziram geração em 30%.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--ss-border);">
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);white-space:nowrap;">18/04/2026 08:45</td>
+                <td style="padding:.65rem 1rem;font-weight:500;">Painel A</td>
+                <td style="padding:.65rem 1rem;">Interferência animal</td>
+                <td style="padding:.65rem 1rem;"><span class="badge rounded-pill px-2 py-1" style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0;font-size:.78rem;">Baixa</span></td>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);">Presença de pombos sobre os módulos fotovoltaicos.</td>
+              </tr>
+              <tr>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);white-space:nowrap;">15/04/2026 16:20</td>
+                <td style="padding:.65rem 1rem;font-weight:500;">Painel C</td>
+                <td style="padding:.65rem 1rem;">Manutenção preventiva</td>
+                <td style="padding:.65rem 1rem;"><span class="badge rounded-pill px-2 py-1" style="background:#fef9c3;color:#854d0e;border:1px solid #fef08a;font-size:.78rem;">Média</span></td>
+                <td style="padding:.65rem 1rem;color:var(--ss-muted);">Limpeza programada dos módulos e verificação de conectores.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
