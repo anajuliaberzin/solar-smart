@@ -3,125 +3,130 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1f" />
   <title>SolarSmart — Energia Solar Inteligente</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="css/theme.css" />
 </head>
-<body>
-
-  <!-- ===== NAVBAR ===== -->
-  <nav class="ss-navbar">
-    <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="ss-logo">Solar<span>Smart</span></a>
+<body class="landing-page">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="index.html" class="ss-logo" aria-label="SolarSmart início">Solar<span>Smart</span></a>
       <a href="login.html" class="ss-btn-primary">Entrar</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="ss-hero">
-    <div class="ss-hero-grid"></div>
-    <div class="container position-relative" style="z-index:2;">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-8">
-          <div class="anim-fade-up">
-            <span class="badge rounded-pill px-3 py-2 mb-4"
-              style="background:rgba(245,158,11,.15);color:#f59e0b;font-family:var(--font-body);font-size:.82rem;border:1px solid rgba(245,158,11,.3);">
-              <i class="bi bi-sun"></i>&nbsp; ENERGIA SOLAR PARA TODOS
-            </span>
-          </div>
-          <h1 class="display-3 fw-bold text-white mb-4 anim-fade-up anim-delay-1"
-              style="line-height:1.08;letter-spacing:-.02em;">
-            Transforme o sol em<br>
-            <span style="color:var(--ss-accent);">economia real</span>
-          </h1>
-          <p class="fs-5 mb-5 anim-fade-up anim-delay-2"
-             style="color:rgba(255,255,255,.72);font-weight:300;max-width:520px;margin:0 auto 2.5rem;">
-            Simule, monitore e otimize seu sistema solar fotovoltaico — tudo em uma plataforma inteligente e fácil de usar.
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+            Energia solar para todos
+          </span>
+          <h1>Energia solar, calculada antes de instalar.</h1>
+          <p class="hero-description">
+            Simule o retorno do seu investimento, acompanhe a geração em tempo real e veja quanto você deixa de gastar na conta de luz.
           </p>
-          <div class="d-flex gap-3 justify-content-center flex-wrap anim-fade-up anim-delay-3">
+          <div class="hero-actions">
             <a href="login.html" class="ss-btn-cta">Acessar sistema</a>
             <a href="#features" class="ss-btn-outline">Saiba mais</a>
           </div>
+          <div class="hero-stats" aria-label="Resultados SolarSmart">
+            <div class="stat">
+              <strong>98%</strong>
+              <span>satisfação</span>
+            </div>
+            <div class="stat">
+              <strong>+5k</strong>
+              <span>simulações</span>
+            </div>
+            <div class="stat">
+              <strong>R$ 2M+</strong>
+              <span>em economia gerada</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scene" aria-hidden="true">
+          <div class="sun-orbit"></div>
+          <div class="sun"></div>
+          <div class="stage">
+            <div class="float">
+              <div class="panel-shadow"></div>
+              <div class="panel-stack" id="panel-stack">
+                <div class="panel-top"></div>
+              </div>
+            </div>
+          </div>
+          <div class="scene-caption"><span></span> Energia limpa, em perspectiva</div>
         </div>
       </div>
+    </section>
 
-      <!-- Hero stats -->
-      <div class="row justify-content-center mt-5 pt-3 anim-fade-up anim-delay-4 g-3">
-        <div class="col-auto">
-          <div class="text-center px-4" style="border-right:1px solid rgba(255,255,255,.15);">
-            <div class="fw-bold text-white fs-4" style="font-family:var(--font-display);">98%</div>
-            <div style="color:rgba(255,255,255,.5);font-size:.8rem;">satisfação</div>
-          </div>
-        </div>
-        <div class="col-auto">
-          <div class="text-center px-4" style="border-right:1px solid rgba(255,255,255,.15);">
-            <div class="fw-bold text-white fs-4" style="font-family:var(--font-display);">+5k</div>
-            <div style="color:rgba(255,255,255,.5);font-size:.8rem;">simulações</div>
-          </div>
-        </div>
-        <div class="col-auto">
-          <div class="text-center px-4">
-            <div class="fw-bold text-white fs-4" style="font-family:var(--font-display);">R$ 2M+</div>
-            <div style="color:rgba(255,255,255,.5);font-size:.8rem;">em economia gerada</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURES ===== -->
-  <section id="features" class="py-6" style="padding: 6rem 0; background: var(--ss-bg);">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold mb-3" style="font-size:2.2rem;letter-spacing:-.01em;">
-          Por que escolher a <span style="color:var(--ss-blue-brand);">SolarSmart?</span>
-        </h2>
-        <p style="color:var(--ss-muted);max-width:480px;margin:0 auto;">
-          Uma plataforma completa para quem quer tomar decisões mais inteligentes sobre energia solar.
-        </p>
+    <section id="features" class="features-section">
+      <div class="section-heading">
+        <span class="section-kicker">Feita para decisões melhores</span>
+        <h2>Por que escolher a <span>SolarSmart?</span></h2>
+        <p>Uma plataforma completa para quem quer tomar decisões mais inteligentes sobre energia solar.</p>
       </div>
 
-      <div class="row g-4 justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-md-4">
-          <div class="ss-feature-card h-100">
-            <div class="ss-feature-icon"><i class="bi bi-cash-coin" style="font-size:1.6rem;color:var(--ss-blue-brand);"></i></div>
-            <h5 class="fw-bold mb-2" style="font-size:1.15rem;">Redução de Custos</h5>
-            <p style="color:var(--ss-muted);font-size:.92rem;margin:0;">
-              Calcule exatamente quanto você vai economizar na conta de luz e veja o retorno do seu investimento mês a mês.
-            </p>
+      <div class="feature-grid">
+        <article class="ss-feature-card">
+          <div class="ss-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20m5-16H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
           </div>
+          <h3>Redução de Custos</h3>
+          <p>Calcule exatamente quanto você vai economizar na conta de luz e veja o retorno do seu investimento mês a mês.</p>
+        </article>
+        <article class="ss-feature-card">
+          <div class="ss-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18M8 15l4-4 3 3 6-7"></path><path d="M17 7h4v4"></path></svg>
+          </div>
+          <h3>Monitoramento Inteligente</h3>
+          <p>Acompanhe a geração e o consumo em tempo real. Relatórios automatizados para você nunca perder nada.</p>
+        </article>
+        <article class="ss-feature-card">
+          <div class="ss-feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"></path><path d="M12 5.7c-.2 4.2-1.8 7.4-5 9.7m5-3.1c1.4.2 2.8.1 4.1-.4"></path></svg>
+          </div>
+          <h3>Sustentabilidade</h3>
+          <p>Meça seu impacto ambiental positivo e contribua para um futuro mais limpo com energia 100% renovável.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="simulator-section" aria-labelledby="simulator-title">
+      <div class="simulator-card">
+        <div class="simulator-copy">
+          <span class="section-kicker">Uma conta mais leve</span>
+          <h2 id="simulator-title">Simule sua economia</h2>
+          <p>Arraste e veja a estimativa se atualizar.</p>
+          <label for="bill-range">Conta de luz mensal <strong id="bill-value">R$ 450</strong></label>
+          <input id="bill-range" type="range" min="100" max="2000" step="50" value="450" aria-describedby="range-help" />
+          <div class="range-scale" id="range-help"><span>R$ 100</span><span>R$ 2.000</span></div>
+          <div class="progress-track" aria-hidden="true"><span id="savings-progress"></span></div>
         </div>
-        <!-- Card 2 -->
-        <div class="col-md-4">
-          <div class="ss-feature-card h-100">
-            <div class="ss-feature-icon"><i class="bi bi-bar-chart-line" style="font-size:1.6rem;color:var(--ss-blue-brand);"></i></div>
-            <h5 class="fw-bold mb-2" style="font-size:1.15rem;">Monitoramento Inteligente</h5>
-            <p style="color:var(--ss-muted);font-size:.92rem;margin:0;">
-              Acompanhe a geração e o consumo em tempo real. Relatórios automatizados para você nunca perder nada.
-            </p>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col-md-4">
-          <div class="ss-feature-card h-100">
-            <div class="ss-feature-icon"><i class="bi bi-leaf" style="font-size:1.6rem;color:var(--ss-blue-brand);"></i></div>
-            <h5 class="fw-bold mb-2" style="font-size:1.15rem;">Sustentabilidade</h5>
-            <p style="color:var(--ss-muted);font-size:.92rem;margin:0;">
-              Meça seu impacto ambiental positivo e contribua para um futuro mais limpo com energia 100% renovável.
-            </p>
-          </div>
+        <div class="savings-result" aria-live="polite">
+          <span>Economia estimada por ano</span>
+          <strong id="annual-savings">R$ 0</strong>
+          <small>valor ilustrativo</small>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="ss-footer">
-    <p class="mb-0">© 2026 SolarSmart. Todos os direitos reservados.</p>
+  <footer class="site-footer">
+    <a href="index.html" class="ss-logo">Solar<span>Smart</span></a>
+    <p>© 2026 SolarSmart. Todos os direitos reservados.</p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/landing.js"></script>
 </body>
 </html>
